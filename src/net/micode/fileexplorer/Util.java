@@ -137,27 +137,27 @@ public class Util {
         return lFileInfo;
     }
 
-	/*
-	 * 采用了新的办法获取APK图标，之前的失败是因为android中存在的一个BUG,通过
-	 * appInfo.publicSourceDir = apkPath;来修正这个问题，详情参见:
-	 * http://code.google.com/p/android/issues/detail?id=9151
-	 */
-	public static Drawable getApkIcon(Context context, String apkPath) {
-		PackageManager pm = context.getPackageManager();
-		PackageInfo info = pm.getPackageArchiveInfo(apkPath,
-				PackageManager.GET_ACTIVITIES);
-		if (info != null) {
-			ApplicationInfo appInfo = info.applicationInfo;
-			appInfo.sourceDir = apkPath;
-			appInfo.publicSourceDir = apkPath;
-			try {
-				return appInfo.loadIcon(pm);
-			} catch (OutOfMemoryError e) {
-				Log.e(LOG_TAG, e.toString());
-			}
-		}
-		return null;
-	}
+    /*
+     * 采用了新的办法获取APK图标，之前的失败是因为android中存在的一个BUG,通过
+     * appInfo.publicSourceDir = apkPath;来修正这个问题，详情参见:
+     * http://code.google.com/p/android/issues/detail?id=9151
+     */
+    public static Drawable getApkIcon(Context context, String apkPath) {
+        PackageManager pm = context.getPackageManager();
+        PackageInfo info = pm.getPackageArchiveInfo(apkPath,
+                PackageManager.GET_ACTIVITIES);
+        if (info != null) {
+            ApplicationInfo appInfo = info.applicationInfo;
+            appInfo.sourceDir = apkPath;
+            appInfo.publicSourceDir = apkPath;
+            try {
+                return appInfo.loadIcon(pm);
+            } catch (OutOfMemoryError e) {
+                Log.e(LOG_TAG, e.toString());
+            }
+        }
+        return null;
+    }
 
     public static String getExtFromFilename(String filename) {
         int dotPosition = filename.lastIndexOf('.');
@@ -400,6 +400,9 @@ public class Util {
     public static void updateActionModeTitle(ActionMode mode, Context context, int selectedNum) {
         if (mode != null) {
             mode.setTitle(context.getString(R.string.multi_select_title,selectedNum));
+            if(selectedNum == 0){
+                mode.finish();
+            }
         }
     }
 
