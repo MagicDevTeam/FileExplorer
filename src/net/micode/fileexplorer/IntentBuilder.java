@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
+ * Copyright (c) 2013, The MagicMod Project
  *
  * This file is part of FileExplorer.
  *
@@ -151,6 +152,9 @@ public class IntentBuilder {
         String mimeType = MimeUtils.guessMimeTypeFromExtension(ext);
         if (ext.equals("mtz")) {
             mimeType = "application/miui-mtz";
+        }
+        if (ext.equals("ctz")) {
+            mimeType = "application/mm-ctz";
         }
 
         return mimeType != null ? mimeType : "*/*";

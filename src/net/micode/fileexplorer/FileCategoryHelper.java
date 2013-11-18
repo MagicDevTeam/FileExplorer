@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
- *
+ * Copyright (c) 2013, The MagicMod Project
+ * 
  * This file is part of FileExplorer.
  *
  * FileExplorer is free software: you can redistribute it and/or modify
@@ -53,6 +54,8 @@ public class FileCategoryHelper {
 
     private static String APK_EXT = "apk";
     private static String THEME_EXT = "mtz";
+    private static String THEME_MM_EXT = "ctz";
+    
     private static String[] ZIP_EXTS  = new String[] {
             "zip", "rar"
     };
@@ -160,7 +163,7 @@ public class FileCategoryHelper {
         String selection = null;
         switch (cat) {
             case Theme:
-                selection = FileColumns.DATA + " LIKE '%.mtz'";
+                selection = FileColumns.DATA + " LIKE '%.mtz'" + " or " + FileColumns.DATA + " LIKE '%.ctz'";
                 break;
             case Doc:
                 selection = buildDocSelection();
@@ -301,7 +304,7 @@ public class FileCategoryHelper {
         if (ext.equalsIgnoreCase(APK_EXT)) {
             return FileCategory.Apk;
         }
-        if (ext.equalsIgnoreCase(THEME_EXT)) {
+        if (ext.equalsIgnoreCase(THEME_EXT) || ext.equalsIgnoreCase(THEME_MM_EXT)) {
             return FileCategory.Theme;
         }
 

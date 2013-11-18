@@ -1,6 +1,8 @@
 /*
  * Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
  *
+ * Copyright (c) 2013, The MagicMod Project
+ * 
  * This file is part of FileExplorer.
  *
  * FileExplorer is free software: you can redistribute it and/or modify
@@ -72,6 +74,9 @@ public class FileIconHelper implements IconLoadFinishListener {
         }, R.drawable.file_icon_zip);
         addItem(new String[] {
             "mtz"
+        }, R.drawable.file_icon_theme);
+        addItem(new String[] {
+            "ctz"
         }, R.drawable.file_icon_theme);
         addItem(new String[] {
             "rar"
