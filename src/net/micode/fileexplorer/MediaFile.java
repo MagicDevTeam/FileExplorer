@@ -69,7 +69,12 @@ public class MediaFile {
     public static final int FILE_TYPE_WEBP = 36;
     private static final int FIRST_IMAGE_FILE_TYPE = FILE_TYPE_JPEG;
     private static final int LAST_IMAGE_FILE_TYPE = FILE_TYPE_WEBP;
-
+    
+    // Doc file types
+    public static final int FILE_TYPE_TXT = 41;
+    public static final int FILE_TYPE_PDF = 42;
+    public static final int FILE_TYPE_WORD = 43;
+    public static final int FILE_TYPE_EXCEL = 44;
     public static class MediaFileType {
         public final int fileType;
         public final String mimeType;
@@ -124,6 +129,11 @@ public class MediaFile {
         addFileType("BMP", FILE_TYPE_BMP, "image/x-ms-bmp", MtpConstants.FORMAT_BMP);
         addFileType("WBMP", FILE_TYPE_WBMP, "image/vnd.wap.wbmp");
         addFileType("WEBP", FILE_TYPE_WEBP, "image/webp");
+        
+        addFileType("TXT", FILE_TYPE_TXT, "text/plain");
+        addFileType("PDF", FILE_TYPE_PDF, "application/pdf");
+        addFileType("DOC", FILE_TYPE_WORD, "application/msword");
+        addFileType("XLS", FILE_TYPE_EXCEL, "application/vnd.ms-excel");
     }
 
     public static boolean isAudioFileType(int fileType) {
